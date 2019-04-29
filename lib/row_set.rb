@@ -18,23 +18,6 @@ class RowSet
     }
   end
 
-  def matched_value(row)
-    with_metadata(row).map { |column, data|
-      match_types_for(column)
-        .map { |object| object.normalize(data) }
-        .select { |value| @set.include?(value) }
-        .first
-    }.compact.first
-  end
-
-  def identifier_for(row)
-    with_metadata(row).map { |column, data|
-      match_types_for(column)
-        .map { |object| object.normalize(data) }
-        .first
-    }.compact.first
-  end
-
   def add(row)
     new_set = with_metadata(row)
       .map { |column, data|

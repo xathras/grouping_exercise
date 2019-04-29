@@ -43,27 +43,4 @@ RSpec.describe RowSet do
     expect(validator.include?(row2)).to eq(true)
     expect(validator.include?(row3)).to eq(true)
   end
-
-  it 'should let you know which column/value is in the set' do
-    options = Options.new.tap do |opts|
-      opts.phone_number = true
-    end
-    columns = Columns.parse(%w[FirstName Phone])
-    row1 = Row.new(columns, %w[Andrew 5555555555])
-    row2 = Row.new(columns, %w[Andy 5555555555])
-    validator = RowSet.new(options).add(row1)
-
-    expect(validator.matched_value(row2)).to eq('15555555555')
-  end
-
-  it 'should let you find out which column/value would be used to identify the entry in the set' do
-    options = Options.new.tap do |opts|
-      opts.phone_number = true
-    end
-    columns = Columns.parse(%w[FirstName Phone])
-    row = Row.new(columns, %w[Andrew 5555555555])
-    validator = RowSet.new(options)
-
-    expect(validator.identifier_for(row)).to eq('15555555555')
-  end
 end
