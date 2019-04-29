@@ -1,4 +1,4 @@
-# frozen_string_literal = true
+# frozen_string_literal: true
 
 require 'match_types/email'
 require 'match_types/phone_number'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Columns
   Column = Struct.new(:name) do
     def email?

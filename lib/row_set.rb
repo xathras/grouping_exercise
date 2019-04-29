@@ -1,4 +1,4 @@
-# frozen_string_literal = true
+# frozen_string_literal: true
 
 require 'set'
 require 'match_types'
@@ -36,9 +36,11 @@ class RowSet
   end
 
   def add(row)
-    new_set = with_metadata(row).map { |column, data|
-      match_types_for(column).first&.normalize(data)
-    }.reduce(Set.new(@set.to_a)) { |new_set, data| new_set.add(data) }
+    new_set = with_metadata(row)
+      .map { |column, data|
+        match_types_for(column).first&.normalize(data)
+      }
+      .reduce(Set.new(@set.to_a)) { |new_set, data| new_set.add(data) }
     self.class.new(@options, new_set)
   end
 

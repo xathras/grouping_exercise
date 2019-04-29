@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # this class represents a simple US phone number
 # if you need to represent non-US phone numbers you'll
 # need to make significant changes, especially to the

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Row
   attr_reader :columns
   attr_reader :data
