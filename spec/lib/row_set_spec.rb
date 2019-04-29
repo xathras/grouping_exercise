@@ -53,6 +53,6 @@ RSpec.describe RowSet do
     row2 = Row.new(columns, %w[Andy 5555555555])
     validator = RowSet.new(options).add(row1)
 
-    expect(validator.matched_value?(row2)).to eq('15555555555')
+    expect(validator.matched_value(row2)).to eq('15555555555')
   end
 end
