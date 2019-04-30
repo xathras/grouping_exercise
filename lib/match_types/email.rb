@@ -7,7 +7,7 @@ module MatchTypes
     end
 
     def normalize(data)
-      data
+      data.downcase
     end
   end
 end
