@@ -30,12 +30,12 @@ columns = nil
 seen_rows = RowSet.new(args)
 output_filename = "#{File.basename(args.filename, '.*')}_output.csv"
 
-csv_string = CSV.generate do |output_csv|
+CSV.open(output_filename, "wb") do |output_csv|
   counter = 0
   CSV.foreach(args.filename) do |raw_row|
     columns ||= Columns.parse(raw_row)
     if columns.first.name == raw_row[0]
-      output_csv.puts(%w[identifier] + raw_row)
+      output_csv.puts(%w[ID] + raw_row)
       next
     end
     counter += 1
@@ -49,6 +49,3 @@ csv_string = CSV.generate do |output_csv|
                 end
   end
 end
-
-puts csv_string
-
